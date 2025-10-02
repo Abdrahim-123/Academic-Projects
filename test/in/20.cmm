@@ -1,0 +1,6 @@
+float foo()
+{
+// Let's play with arrays
+	float _1Correct[];
+	return 1;
+}

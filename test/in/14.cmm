@@ -1,0 +1,5 @@
+float foo()
+{
+	float _1Correct = 0x0;
+	return 1;
+}

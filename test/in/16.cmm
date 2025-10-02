@@ -1,0 +1,5 @@
+float foo() // this is a test function
+{
+	float _1Correct = 9.01;
+	return 1;
+}

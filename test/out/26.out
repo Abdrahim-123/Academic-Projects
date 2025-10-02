@@ -1,0 +1,7 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+<LC, {>
+<TYPE, int>
+Lexical Error at Line 3: Illegal identifier "123abc".

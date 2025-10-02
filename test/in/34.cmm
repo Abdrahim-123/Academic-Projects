@@ -1,0 +1,5 @@
+int foo()
+{
+	int _1Correct = 0x12G5;
+	return 1;
+}
