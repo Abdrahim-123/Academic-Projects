@@ -1,0 +1,16 @@
+# Build artifacts
+/CP2_PROJECT/main.exe
+/CP2_PROJECT/main.o
+/CP2_PROJECT/*.exe
+/build/
+/bin/
+/obj/
+
+# VS Code
+/.vscode/.history
+/.vscode/*.code-workspace
+.vscode/*.keybindings.json
+
+# OS files
+Thumbs.db
+.DS_Store

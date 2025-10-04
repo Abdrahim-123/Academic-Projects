@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build: active file (gcc)",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: gcc (on PATH)"
+        },
+        {
+            "type": "shell",
+            "label": "build: active file (tdm-gcc)",
+            "command": "D:\\tdm-gcc\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "compiler: D:\\tdm-gcc\\bin\\gcc.exe"
+        }
+    ]
+}
