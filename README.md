@@ -79,11 +79,3 @@ See `CONTRIBUTING.md` for a short guide. If you open a PR, please include:
 This project is provided under the MIT license — see `LICENSE`.
 
 ---
-
-If you want, I can:
-
-- Normalize the `.vscode/launch.json` to include both Windows and POSIX configurations
-- Create a small `Makefile` (for Unix) or `build.bat` (for Windows) if you prefer those workflows
-- Initialize a Git repository and push to GitHub (I'll show the commands and wait for confirmation)
-
-Tell me which of the above you'd like next.
