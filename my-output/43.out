@@ -1,0 +1,5 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+Lexical Error at Line 2: Illegal character "$".

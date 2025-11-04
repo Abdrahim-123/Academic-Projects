@@ -1,0 +1,10 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+<LC, {>
+<TYPE, int>
+<ID, _1Correct>
+<ASSIGNOP, =>
+<INT, 2>
+Lexical Error at Line 3: Illegal character "~".
