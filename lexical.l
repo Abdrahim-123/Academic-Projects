@@ -1,14 +1,15 @@
 %{
 extern unsigned lexError;
 extern FILE* outFile;
+#include <unistd.h>
 %}
 
 
 %%
-/*RULES*/
-/*------------------------------------------*/
 
-/*Whitespaces*/
+
+
+
 [ \t]+    {;}
 
 \n      {yylineno++;}
@@ -17,9 +18,9 @@ extern FILE* outFile;
 
 "\/\*"(.|\n)*?"\*\/"  {;}
 
-/*-----------------------------------------
 
-/*Keywords*/
+
+
 "if"    {
     fprintf(outFile, "<IF, if>\n");
 }
@@ -48,68 +49,109 @@ extern FILE* outFile;
     fprintf(outFile, "<TYPE, float>\n");
 }
 
-/*------------------------------*/
+[0-9]+\.(e|E)[+-]?  {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
 
-/*ID*/
+[0-9]+\.    {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
+
+\.(e|E)[+-]?[0-9]+  {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
+
+\.[0-9]+    {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
+
+
 [a-zA-Z_][a-zA-Z0-9_]*  {
     fprintf(outFile, "<ID, %s>\n", yytext);
 }
 
 
-/*Valid Scientific Float*/
-[0-9]+\.[0-9]+(e|E)[+-]?[0-9]+    {
+
+([0-9]+\.[0-9]*|\.[0-9]+)(e|E)[+-]?[0-9]+    {
     fprintf(outFile, "<FLOAT, %s>\n", yytext);
 }
 
+[0-9]+(e|E)[+-]?[0-9]+  {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
 
-/*Invalid Scientific Float*/
+[0-9]+\.[0-9]+(e|E)[+-]?[0-9]*[a-zA-Z_]+[0-9a-zA-Z_]*   {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
+}
+
 [0-9]+\.[0-9]+(e|E)[+-]?    {
     lexError = 1;
     fprintf(outFile, "Lexical Error at Line %d: Invalid float or scientific notation \"%s\".\n", yylineno, yytext);
+    return 0;
 }
 
-/*Valid Standard Float*/
+
 [0-9]+\.[0-9]+ {
     fprintf(outFile, "<FLOAT, %s>\n", yytext);
+}
 
 
 
-/*Valid Hexadecimel*/
 (0x|0X)[0-9a-fA-F]+ {
     fprintf(outFile, "<INT, %s>\n", yytext);
 }
 
-/*Invalid Octal*/
+
 (0)[0-7]*[89][0-9]* {
     lexError = 1;
     fprintf(outFile, "Lexical Error at Line %d: Invalid octal or hex number \"%s\".\n", yylineno, yytext);
+    return 0;
 }
 
-/*Invalid Hexadecimel*/
+
 (0x|0X)[0-9a-fA-F]*[g-zG-Z_][0-9a-zA-Z_]*    {
     lexError = 1;
     fprintf(outFile, "Lexical Error at Line %d: Invalid octal or hex number \"%s\".\n", yylineno, yytext);
+    return 0;
 }
 
-/*Valid Octal*/
+
+[0-9]+[a-zA-Z_]+    {
+    lexError = 1;
+    fprintf(outFile, "Lexical Error at Line %d: Illegal identifier \"%s\".\n", yylineno, yytext);
+    return 0;
+}
+
 (0)[0-7]+   {
     fprintf(outFile, "<INT, %s>\n", yytext);
 }
 
 
-/*Valid Decimal*/
+
 (0|[1-9][0-9]*)  {
     fprintf(outFile, "<INT, %s>\n", yytext);
 }
 
 
-/*Illegal Identtifier*/
+
 (0x|0X) {
     lexError = 1;
     fprintf(outFile, "Lexical Error at Line %d: Illegal identifier \"%s\".\n", yylineno, yytext);
 }
 
-/*Two Char Ops*/
+
 "&&"    {
     fprintf(outFile, "<AND, &&>\n");
 }
@@ -118,7 +160,7 @@ extern FILE* outFile;
     fprintf(outFile, "<OR, ||>\n");
 }
 
-/*Single Char Ops*/
+
 ";" {
     fprintf(outFile, "<SEMI, ;>\n");
 }
@@ -183,12 +225,13 @@ extern FILE* outFile;
     fprintf(outFile, "<RELOP, %s>\n", yytext);
 }
 
-/*---------------*/
 
-/*The Catch all error*/
+
+
 .   {
     lexError = 1;
     fprintf(outFile, "Lexical Error at Line %d: Illegal character \"%s\".\n", yylineno, yytext);
+    return 0;
 }
 
 %%
