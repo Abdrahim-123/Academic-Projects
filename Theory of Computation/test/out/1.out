@@ -1,0 +1,12 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+<LC, {>
+<TYPE, int>
+<ID, _1Correct>
+<SEMI, ;>
+<RETURN, return>
+<INT, 1>
+<SEMI, ;>
+<RC, }>

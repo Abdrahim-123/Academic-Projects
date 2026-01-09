@@ -1,0 +1,10 @@
+float foo()
+/* This is a comment block that
+spans 
+multiple
+lines.
+*/
+{
+	float _1Correct = 9.01;
+	return 1;
+}

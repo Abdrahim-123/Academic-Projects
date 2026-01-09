@@ -1,0 +1,5 @@
+int foo()
+{
+	int 123abc = 2;
+	return 1;
+}

@@ -1,0 +1,9 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+<LC, {>
+<TYPE, int>
+<ID, _1Correct>
+<ASSIGNOP, =>
+Lexical Error at Line 3: Invalid float or scientific notation "1.2e+".

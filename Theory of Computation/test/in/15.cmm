@@ -1,0 +1,4 @@
+int main() {
+  int hex = 0x3f;
+  return hex;
+}

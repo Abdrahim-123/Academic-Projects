@@ -1,0 +1,5 @@
+float foo()
+{
+	ID _1Correct = 0xff39;
+	return 1;
+}

@@ -1,0 +1,14 @@
+<TYPE, int>
+<ID, foo>
+<LP, (>
+<RP, )>
+<LC, {>
+<TYPE, int>
+<ID, _1Correct>
+<ASSIGNOP, =>
+<FLOAT, 02.14E+123456>
+<SEMI, ;>
+<RETURN, return>
+<INT, 1>
+<SEMI, ;>
+<RC, }>

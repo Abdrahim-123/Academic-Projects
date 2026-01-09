@@ -1,0 +1,5 @@
+int foo()
+{
+	int 1Wrong = 2;
+	return 1;
+}

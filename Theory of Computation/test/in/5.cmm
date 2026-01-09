@@ -1,0 +1,5 @@
+int foo()
+{
+	float _1Correct = 2.00e-1000000000;
+	return 1;
+}

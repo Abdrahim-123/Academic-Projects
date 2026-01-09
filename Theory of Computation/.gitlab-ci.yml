@@ -1,0 +1,18 @@
+image: knordman/bison-flex-builder:latest
+
+stages:
+  - check
+  - test
+
+check_files:
+  stage: check
+  script:
+    - ./check_files.sh
+
+run_scanner_tests:
+  stage: test
+  script:
+    - ./run_tests.sh
+  dependencies:
+    - check_files
+
