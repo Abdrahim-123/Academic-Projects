@@ -1,0 +1,15 @@
+[
+    {
+        "key": "f5",
+        "command": "-extension.CompileRun"
+    },
+    {
+        "key": "f5",
+        "command": "-extension.Debug"
+    },
+    {
+        "key": "f5",
+        "command": "workbench.action.debug.start",
+        "when": "editorTextFocus"
+    }
+]
